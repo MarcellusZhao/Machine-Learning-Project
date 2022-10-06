@@ -157,3 +157,52 @@ python generate_guided_backprop.py --load_path checkpoints/CNN/random --gif
 
 This will give you the following figure and gif. If you do not want to generate gif as it will take a lot of time, drop **--gif**. The left and right images in the gif are 
 the temporal amplitude changes of female's and male's signals. In the middle is our corresponding significance map.
+
+<p align="center">
+  <img src="figs/heat-sign.png" height="370">
+</p>
+
+<p align="center">
+  <img height="200" src="figs/topographic.gif">
+</p>
+
+### Statistic Analysis
+
+We also provide the codes for the statistic analysis introduced in our paper.
+
+* For **tANOVA analysis**, run
+
+  ```
+  python statistic_analysis.py --analysis tANOVA --fig_path ./figs
+  ```
+
+  It will give you the following figure `./figs/tANOVA.png` showing the p-value at each time point.
+
+<p align="center">
+<img src="figs/tANOVA.png" height="200">
+</p>
+
+For **t-test analysis**, run
+
+```
+python statistic_analysis.py --analysis ttest --fig_path ./figs
+```
+
+It will give you the following figure `./figs/t-test.png` showing the p-value for each channel at every time point.
+
+<p align="center">
+<img src="figs/t-test.png" height="250">
+</p>
+
+For **behavioral data analysis**, run
+
+```
+python statistic_analysis.py --analysis htest
+```
+
+You will have the following results, means(stds) and p-value of Kruskal-Wallis Test, as reported in Appendices Sec. F of our paper.
+
+|                    |    Female    |     Male     | Kruskal-Wallis Test |
+| :----------------: | :----------: | :----------: | :-----------------: |
+|      Accuracy      | 0.839(0.079) | 0.837(0.067) |        0.819        |
+| Reaction Time (ms) | 943.8(128.6) | 962.7(127.0) |        0.503        |
